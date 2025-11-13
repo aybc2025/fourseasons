@@ -1,0 +1,447 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --panel-soft: #111827ee;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #f97316;   /* כתום */
+  --accent-2: #22c55e; /* ירוק */
+  --accent-3: #38bdf8; /* תכלת */
+  --spring: #ecfeff;
+  --summer: #fef3c7;
+  --autumn: #ffedd5;
+  --winter: #e0f2fe;
+  --danger: #f97373;
+  --success: #4ade80;
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.5);
+  --shadow-light: 0 8px 20px rgba(15, 23, 42, 0.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #1f2937, #020617 60%);
+  color: var(--text);
+}
+
+/* מבנה בסיסי */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+/* כותרת עליונה */
+
+.site-header {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-title h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.emoji {
+  font-size: 2rem;
+}
+
+.top-nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.top-nav a:hover {
+  color: var(--text);
+  border-color: rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+/* גיבור */
+
+.hero {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  margin: 0 0 0.75rem;
+}
+
+.hero-text p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.primary-btn {
+  margin-top: 1rem;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  color: #111827;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-illustration {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vivaldi-card {
+  background: var(--panel-soft);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.vivaldi-emoji {
+  font-size: 2.4rem;
+}
+
+.vivaldi-name {
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
+.vivaldi-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.seasons-circle {
+  margin-top: 0.5rem;
+  background: radial-gradient(circle at top, #1e293b, #020617 65%);
+  border-radius: 999px;
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.season-bubble {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+}
+
+.season-bubble.spring {
+  background: var(--spring);
+  color: #0f172a;
+}
+
+.season-bubble.summer {
+  background: var(--summer);
+  color: #78350f;
+}
+
+.season-bubble.autumn {
+  background: var(--autumn);
+  color: #7c2d12;
+}
+
+.season-bubble.winter {
+  background: var(--winter);
+  color: #0f172a;
+}
+
+/* קטעי תוכן כלליים */
+
+section {
+  margin-top: 2.5rem;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.section-intro {
+  margin: 0.3rem 0 1rem;
+  color: var(--muted);
+}
+
+/* כרטיסי העונות */
+
+.seasons-section {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.season-card {
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.1s ease, box-shadow 0.1s ease,
+    border-color 0.15s ease;
+}
+
+.season-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.season-card p {
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.season-card[data-season="spring"] {
+  background: radial-gradient(circle at top, #bbf7d0, #022c22);
+}
+.season-card[data-season="summer"] {
+  background: radial-gradient(circle at top, #fed7aa, #7c2d12);
+}
+.season-card[data-season="autumn"] {
+  background: radial-gradient(circle at top, #fed7aa, #3b0764);
+}
+.season-card[data-season="winter"] {
+  background: radial-gradient(circle at top, #bfdbfe, #020617);
+}
+
+.season-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(248, 250, 252, 0.8);
+}
+
+.play-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.8);
+  transition: background 0.1s ease, transform 0.1s ease;
+}
+
+.play-btn:hover {
+  background: rgba(15, 23, 42, 1);
+  transform: translateY(-1px);
+}
+
+/* אזור ההסבר של העונה */
+
+.season-details {
+  margin-top: 1.3rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: #020617;
+  border: 1px dashed rgba(148, 163, 184, 0.8);
+}
+
+.season-details h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+/* משחק */
+
+.game-section .section-intro {
+  margin-bottom: 0.6rem;
+}
+
+.game-card {
+  margin-top: 0.8rem;
+  background: var(--panel-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.season-buttons-row {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.guess-btn {
+  flex: 1 1 calc(50% - 0.5rem);
+  min-width: 120px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: #020617;
+  color: var(--text);
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.1s ease, transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.guess-btn:hover {
+  background: #111827;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+}
+
+.game-feedback {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}
+
+/* אזורים נוספים */
+
+.about-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.about-card {
+  background: var(--panel-soft);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: var(--shadow-light);
+}
+
+.about-card ul {
+  padding-right: 1.1rem;
+  margin: 0.3rem 0 0;
+}
+
+.parents-section ul {
+  padding-right: 1.1rem;
+}
+
+.site-footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1.5rem 1rem 1.8rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: #020617;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.site-footer .small {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+
+/* רספונסיביות */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-illustration {
+    order: -1;
+  }
+
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+  }
+
+  .seasons-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  main {
+    padding-inline: 1rem;
+  }
+}
