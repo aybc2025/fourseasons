@@ -4,12 +4,31 @@ document.getElementById("scrollToSeasons")?.addEventListener("click", () => {
   if (el) el.scrollIntoView({ behavior: "smooth" });
 });
 
+// מיפוי מזהי האודיו לכל עונה
+const audioIds = {
+  spring: "audio-spring",
+  summer: "audio-summer",
+  autumn: "audio-autumn",
+  winter: "audio-winter"
+};
+
+// פונקציה שעוצרת את כל קבצי האודיו
+function stopAllAudio() {
+  Object.values(audioIds).forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.pause();
+      el.currentTime = 0;
+    }
+  });
+}
+
 // נתוני טקסט לכל עונה להסבר
 const seasonInfo = {
   spring: {
     title: "אביב — מה שומעים במוזיקה?",
     text: [
-      "ב\"אביב\" של ויואלדי שומעים ציפורים שרות, נחלים זורמים וגשם עדין.",
+      'ב"אביב" של ויואלדי שומעים ציפורים שרות, נחלים זורמים וגשם עדין.',
       "לפעמים יש גם רעמים וברקים – אבל אחר כך הכול נרגע שוב.",
       "המוזיקה שמחה, קופצנית ומרגישה כמו פריחה אחרי חורף ארוך."
     ]
@@ -42,23 +61,11 @@ const seasonInfo = {
 
 // השמעת עונה מסוימת
 function playSeasonAudio(season) {
-  const ids = {
-    spring: "audio-spring",
-    summer: "audio-summer",
-    autumn: "audio-autumn",
-    winter: "audio-winter"
-  };
+  // קודם עוצרים הכול
+  stopAllAudio();
 
-  // לעצור הכל
-  Object.values(ids).forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.pause();
-      el.currentTime = 0;
-    }
-  });
-
-  const audio = document.getElementById(ids[season]);
+  const audioId = audioIds[season];
+  const audio = audioId ? document.getElementById(audioId) : null;
   if (audio) {
     audio.play().catch(() => {
       // במכשירים ניידים צריך לעתים אינטראקציה לפני השמעה
@@ -66,6 +73,7 @@ function playSeasonAudio(season) {
     });
   }
 
+  // עדכון טקסט ההסבר
   const details = seasonInfo[season];
   const container = document.getElementById("seasonDetails");
   if (details && container) {
@@ -76,12 +84,29 @@ function playSeasonAudio(season) {
   }
 }
 
-// האזנה לכפתורי העונות
+// האזנה לכפתורי "נגן" של העונות
 document.querySelectorAll(".play-btn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const season = e.currentTarget.getAttribute("data-season");
     if (season) {
       playSeasonAudio(season);
+    }
+  });
+});
+
+// האזנה לכפתורי "הפסק מוזיקה" של העונות
+document.querySelectorAll(".stop-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const season = e.currentTarget.getAttribute("data-season");
+    if (season && audioIds[season]) {
+      const audio = document.getElementById(audioIds[season]);
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    } else {
+      // ליתר ביטחון – אם אין עונה, עוצר את הכול
+      stopAllAudio();
     }
   });
 });
@@ -95,10 +120,21 @@ document.getElementById("playRandomClip")?.addEventListener("click", () => {
   const rnd = Math.floor(Math.random() * seasons.length);
   currentRandomSeason = seasons[rnd];
   playSeasonAudio(currentRandomSeason);
+
   const fb = document.getElementById("gameFeedback");
   if (fb) {
     fb.textContent = "הקטע מתנגן... נסו לנחש איזו עונה זו!";
     fb.style.color = "#e5e7eb";
+  }
+});
+
+// כפתור "הפסק את כל המוזיקה" במשחק
+document.getElementById("stopAllAudio")?.addEventListener("click", () => {
+  stopAllAudio();
+  const fb = document.getElementById("gameFeedback");
+  if (fb) {
+    fb.textContent = "המוזיקה נעצרה. אפשר להמשיך ולשחק או לנגן שוב 🙂";
+    fb.style.color = "#9ca3af";
   }
 });
 
@@ -107,11 +143,13 @@ document.querySelectorAll(".guess-btn").forEach((btn) => {
     const guess = e.currentTarget.getAttribute("data-guess");
     const fb = document.getElementById("gameFeedback");
     if (!fb) return;
+
     if (!currentRandomSeason) {
-      fb.textContent = "קודם נלחץ על \"נגן קטע אקראי\" 🙂";
+      fb.textContent = 'קודם נלחץ על "נגן קטע אקראי" 🙂';
       fb.style.color = "#facc15";
       return;
     }
+
     if (guess === currentRandomSeason) {
       fb.textContent = "כל הכבוד! ניחוש מדויק 👏";
       fb.style.color = "#4ade80";
