@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>ארבע העונות של ויואלדי — לילדים</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- צבע לדפדפן בנייד -->
+  <meta name="theme-color" content="#f97316" />
+
+  <!-- מניפסט ל-PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- אייקון טאבים / קיצור דרך (תיצור קובץ כזה אחר כך) -->
+  <link rel="icon" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title">
+      <span class="emoji">🎻</span>
+      <div>
+        <h1>ארבע העונות של ויואלדי</h1>
+        <p class="subtitle">אתר כיפי לילדים</p>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="#seasons">העונות</a>
+      <a href="#game">משחק</a>
+      <a href="#about">מי היה ויואלדי?</a>
+      <a href="#parents">להורים</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- גיבור -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>מוזיקה שמספרת סיפור על מזג האוויר</h2>
+        <p>
+          אנטוניו ויואלדי כתב יצירה מפורסמת שנקראת
+          <strong>ארבע העונות</strong> – מוזיקה שמספרת איך מרגישים באביב,
+          בקיץ, בסתיו ובחורף.
+        </p>
+        <p>
+          כאן אפשר להקשיב לקטעים קצרים, ללמוד על כל עונה,
+          ולשחק משחק ניחושים קטן.
+        </p>
+        <button id="scrollToSeasons" class="primary-btn">
+          בואו נתחיל! 🌟
+        </button>
+      </div>
+      <div class="hero-illustration">
+        <div class="vivaldi-card">
+          <div class="vivaldi-emoji">🧑‍🎨</div>
+          <p class="vivaldi-name">אנטוניו ויואלדי</p>
+          <p class="vivaldi-desc">
+            מלחין איטלקי שחי לפני בערך 300 שנה וכתב מוזיקה שחוגגת את העונות.
+          </p>
+        </div>
+        <div class="seasons-circle">
+          <div class="season-bubble spring">אביב 🌸</div>
+          <div class="season-bubble summer">קיץ ☀️</div>
+          <div class="season-bubble autumn">סתיו 🍂</div>
+          <div class="season-bubble winter">חורף ❄️</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- בחירת עונה -->
+    <section id="seasons" class="seasons-section">
+      <h2>בחרו עונה והקשיבו למוזיקה 🎧</h2>
+      <p class="section-intro">
+        לחיצה על עונה מפעילה קטע קצר מהמוזיקה, ומציגה הסבר קצר שמתאים לילדים.
+      </p>
+
+      <div class="seasons-grid">
+        <article class="season-card" data-season="spring">
+          <h3>אביב 🌸</h3>
+          <p>ציפורים שרות, פרחים נפתחים, ואפשר לשמוע גשם עדין ורעמים רחוקים.</p>
+          <button class="play-btn" data-season="spring">נגן קטע מהאביב</button>
+        </article>
+
+        <article class="season-card" data-season="summer">
+          <h3>קיץ ☀️</h3>
+          <p>שמש חזקה, חום כבד, וסערה גדולה שמתקרבת עם רעמים וברקים.</p>
+          <button class="play-btn" data-season="summer">נגן קטע מהקיץ</button>
+        </article>
+
+        <article class="season-card" data-season="autumn">
+          <h3>סתיו 🍂</h3>
+          <p>חגיגת קציר, ריקודים, עלים נושרים וצבעים חמים בכל מקום.</p>
+          <button class="play-btn" data-season="autumn">נגן קטע מהסתיו</button>
+        </article>
+
+        <article class="season-card" data-season="winter">
+          <h3>חורף ❄️</h3>
+          <p>קור מקפיא, רוח חזקה, קרח ושלג – אבל גם ישיבה נעימה ליד האח.</p>
+          <button class="play-btn" data-season="winter">נגן קטע מהחורף</button>
+        </article>
+      </div>
+
+      <div id="seasonDetails" class="season-details">
+        <h3>בחירת עונה תציג כאן הסבר קצר 🎼</h3>
+        <p>לחצו על אחת העונות למעלה כדי לקרוא קצת על מה ששומעים במוזיקה.</p>
+      </div>
+    </section>
+
+    <!-- משחק ניחושים -->
+    <section id="game" class="game-section">
+      <h2>משחק: לנחש את העונה לפי הצליל 🎲</h2>
+      <p class="section-intro">
+        לחצו על הכפתור כדי לשמוע קטע קצר, ואז נסו לנחש באיזו עונה מדובר.
+      </p>
+
+      <div class="game-card">
+        <button id="playRandomClip" class="primary-btn">
+          נגן קטע אקראי 🎵
+        </button>
+
+        <div class="season-buttons-row">
+          <button class="guess-btn" data-guess="spring">אביב 🌸</button>
+          <button class="guess-btn" data-guess="summer">קיץ ☀️</button>
+          <button class="guess-btn" data-guess="autumn">סתיו 🍂</button>
+          <button class="guess-btn" data-guess="winter">חורף ❄️</button>
+        </div>
+
+        <p id="gameFeedback" class="game-feedback">
+          קודם נלחץ על “נגן קטע אקראי”, ואז ננסה לנחש…
+        </p>
+      </div>
+    </section>
+
+    <!-- מי היה ויואלדי -->
+    <section id="about" class="about-section">
+      <h2>מי היה אנטוניו ויואלדי? 🧑‍🎻</h2>
+      <div class="about-grid">
+        <div>
+          <p>
+            ויואלדי היה מלחין ומורה למוזיקה שחי בעיר ונציה באיטליה לפני
+            בערך 300 שנה.
+          </p>
+          <p>
+            הוא כתב המון מוזיקה לכינור ולתזמורת, אבל היצירה הכי מפורסמת שלו
+            היא <strong>ארבע העונות</strong>.
+          </p>
+          <p>
+            כל עונה היא קונצ׳רטו – יצירה לכינור סולו ותזמורת – שמנסה לספר
+            סיפור בעזרת צלילים: ציפורים, סערות, חגיגות קציר, ריקודים,
+            שלג וקרח.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3>מוזיקה שמספרת סיפור</h3>
+          <ul>
+            <li>באביב שומעים ציפורים ורעמים רחוקים.</li>
+            <li>בקיץ שומעים סערת רעמים חזקה ומטר.</li>
+            <li>בסתיו שומעים חגיגה, ריקודים וצייד.</li>
+            <li>בחורף שומעים קור, רוח ושלג – וגם חום של מדורה.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- להורים -->
+    <section id="parents" class="parents-section">
+      <h2>מידע קצר להורים ולמורים 👨‍👩‍👧‍👦</h2>
+      <p>
+        האתר מיועד לילדים בסביבות גיל 7, ומנסה להכיר להם מוזיקה קלאסית
+        דרך חוויה פשוטה:
+      </p>
+      <ul>
+        <li>זיהוי אווירה במוזיקה (שקט, סערה, שמחה, קור וכו׳).</li>
+        <li>קישור בין צלילים לבין עונות השנה ומזג האוויר.</li>
+        <li>משחק ניחושים קצר שמחזק הקשבה.</li>
+      </ul>
+      <p>
+        אפשר להרחיב בבית: לעצור את המוזיקה ולשאול את הילד מה הוא מדמיין, 
+        או לבקש שיצייר ציור שמתאים לקטע ששמע.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>נבנה ללימוד כיפי של ארבע העונות של ויואלדי 🎻</p>
+    <p class="small">
+      קבצי השמע צריכים להיות קטעים חוקיים (Public Domain או רישיון מתאים)
+      שיושמו בתיקייה <code>audio/</code>.
+    </p>
+  </footer>
+
+  <!-- אודיו – קבצים שתוסיף בתיקיית audio/ -->
+  <audio id="audio-spring" src="audio/spring.mp3" preload="auto"></audio>
+  <audio id="audio-summer" src="audio/summer.mp3" preload="auto"></audio>
+  <audio id="audio-autumn" src="audio/autumn.mp3" preload="auto"></audio>
+  <audio id="audio-winter" src="audio/winter.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
