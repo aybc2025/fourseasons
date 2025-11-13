@@ -11,7 +11,7 @@
   <!-- מניפסט ל-PWA -->
   <link rel="manifest" href="manifest.json" />
 
-  <!-- אייקון טאבים / קיצור דרך (תיצור קובץ כזה אחר כך) -->
+  <!-- אייקון טאבים / קיצור דרך -->
   <link rel="icon" href="icons/icon-192.png" />
 
   <link rel="stylesheet" href="style.css" />
@@ -79,25 +79,37 @@
         <article class="season-card" data-season="spring">
           <h3>אביב 🌸</h3>
           <p>ציפורים שרות, פרחים נפתחים, ואפשר לשמוע גשם עדין ורעמים רחוקים.</p>
-          <button class="play-btn" data-season="spring">נגן קטע מהאביב</button>
+          <div class="season-buttons-row">
+            <button class="play-btn" data-season="spring">נגן קטע מהאביב</button>
+            <button class="stop-btn" data-season="spring">הפסק מוזיקה</button>
+          </div>
         </article>
 
         <article class="season-card" data-season="summer">
           <h3>קיץ ☀️</h3>
           <p>שמש חזקה, חום כבד, וסערה גדולה שמתקרבת עם רעמים וברקים.</p>
-          <button class="play-btn" data-season="summer">נגן קטע מהקיץ</button>
+          <div class="season-buttons-row">
+            <button class="play-btn" data-season="summer">נגן קטע מהקיץ</button>
+            <button class="stop-btn" data-season="summer">הפסק מוזיקה</button>
+          </div>
         </article>
 
         <article class="season-card" data-season="autumn">
           <h3>סתיו 🍂</h3>
           <p>חגיגת קציר, ריקודים, עלים נושרים וצבעים חמים בכל מקום.</p>
-          <button class="play-btn" data-season="autumn">נגן קטע מהסתיו</button>
+          <div class="season-buttons-row">
+            <button class="play-btn" data-season="autumn">נגן קטע מהסתיו</button>
+            <button class="stop-btn" data-season="autumn">הפסק מוזיקה</button>
+          </div>
         </article>
 
         <article class="season-card" data-season="winter">
           <h3>חורף ❄️</h3>
           <p>קור מקפיא, רוח חזקה, קרח ושלג – אבל גם ישיבה נעימה ליד האח.</p>
-          <button class="play-btn" data-season="winter">נגן קטע מהחורף</button>
+          <div class="season-buttons-row">
+            <button class="play-btn" data-season="winter">נגן קטע מהחורף</button>
+            <button class="stop-btn" data-season="winter">הפסק מוזיקה</button>
+          </div>
         </article>
       </div>
 
@@ -115,9 +127,14 @@
       </p>
 
       <div class="game-card">
-        <button id="playRandomClip" class="primary-btn">
-          נגן קטע אקראי 🎵
-        </button>
+        <div class="game-buttons-main">
+          <button id="playRandomClip" class="primary-btn">
+            נגן קטע אקראי 🎵
+          </button>
+          <button id="stopAllAudio" class="secondary-btn">
+            הפסק את כל המוזיקה ⏹️
+          </button>
+        </div>
 
         <div class="season-buttons-row">
           <button class="guess-btn" data-guess="spring">אביב 🌸</button>
@@ -190,7 +207,7 @@
     </p>
   </footer>
 
-  <!-- אודיו – קבצים שתוסיף בתיקיית audio/ -->
+  <!-- אודיו – קבצים שנמצאים בתיקיית audio/ -->
   <audio id="audio-spring" src="audio/spring.mp3" preload="auto"></audio>
   <audio id="audio-summer" src="audio/summer.mp3" preload="auto"></audio>
   <audio id="audio-autumn" src="audio/autumn.mp3" preload="auto"></audio>
